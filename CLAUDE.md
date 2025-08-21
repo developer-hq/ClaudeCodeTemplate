@@ -37,13 +37,6 @@
 - **表达风格**：直接、犀利、零废话。如果代码垃圾，你会告诉用户为什么它是垃圾。
 - **技术优先**：批评永远针对技术问题，不针对个人。但你不会为了"友善"而模糊技术判断。
 
-### 修改代码时的特殊要求
-
-- **查看文档优先**：在修改比较困难的包时，优先查看官方文档了解正确用法
-- **避免盲目修改**：不了解的库或框架，先用文档工具查询最佳实践
-- **使用MCP工具**：利用context7查看官方文档，用grep搜索GitHub实际用法
-- **测试驱动开发**：可以使用 `/output-style tdd` 切换到TDD模式进行开发
-- **智能代理协作**：对于简单/重复任务或超长上下文，可使用Qwen Code子代理辅助
 
 ### 需求确认流程
 
@@ -151,6 +144,47 @@
    "数据结构错了，应该是..."
    ```
 
+## 🚀 自动化工作流系统
+
+### 智能提交Hook
+- **触发机制**: 使用 `Stop` 事件（对话结束时），避免频繁触发节省token
+- **提交格式**: 自动匹配现有项目格式 `[类型] 内容 操作 用户`
+- **安全机制**: 
+  - 合并冲突检测 → 停止操作，要求人类介入
+  - 远程分支检查 → 警告落后情况
+  - 后台推送支持，显示PID便于管理
+
+### 可选开发模式
+- **TDD模式**: 使用 `/output-style tdd` 切换到测试驱动开发模式
+- **默认模式**: 使用 `/output-style default` 返回标准开发模式
+- **查看样式**: 使用 `/output-style` 查看所有可用输出样式
+
+### 一键部署脚本
+```bash
+# 在任何项目中运行
+./setup-claude-workflow.sh
+```
+
+**功能包含**:
+- Git 仓库检查和初始化
+- Claude 目录结构创建
+- 智能commit hook配置
+- TDD子代理部署
+- CLAUDE.md模板生成
+- Settings.json优化配置
+
+### 后台任务管理
+```bash
+# 查看后台任务
+jobs
+
+# 停止特定推送任务
+kill <显示的PID>
+
+# 停止所有git推送
+pkill -f "git push"
+```
+
 ## 工具使用
 
 ### 文档工具
@@ -184,24 +218,6 @@ claude mcp add --transport http grep https://mcp.grep.app
 ```bash
 claude mcp add spec-workflow-mcp -s user -- npx -y spec-workflow-mcp@latest
 ```
-
-### Qwen Code 子代理协作
-
-4. **智能任务分配**
-   - 使用Task工具调用`qwen-code`子代理处理适合的任务
-   - **适合Qwen的任务**：文档生成、批量格式化、简单代码模板、超长上下文分析
-   - **保留Claude的任务**：复杂推理、架构设计、代码审查、问题诊断
-
-5. **使用方式**
-   ```python
-   # 通过Task工具调用
-   # 简单任务示例：生成大量相似代码、翻译文档、批量重命名等
-   # Qwen在处理重复性工作和长上下文方面更有优势
-   ```
-
-6. **自动回退机制**
-   - Qwen不可用时自动回退到Claude处理
-   - 保证工作流的连续性和可靠性
 
 ## 📋 严格代码规范 (Linus风格)
 
@@ -252,9 +268,3 @@ def process_data(data):
 - `[fix]` - Bug修复  
 - `[dev]` - 开发中
 - `[cleanup]` - 清理代码
-
-# important-instruction-reminders
-Do what has been asked; nothing more, nothing less.
-NEVER create files unless they're absolutely necessary for achieving your goal.
-ALWAYS prefer editing an existing file to creating a new one.
-NEVER proactively create documentation files (*.md) or README files. Only create documentation files if explicitly requested by the User.

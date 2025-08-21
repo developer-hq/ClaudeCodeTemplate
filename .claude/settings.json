@@ -1,0 +1,20 @@
+{
+  "project": {
+    "name": "Claude Code Template",
+    "description": "Simple template for Claude Code projects"
+  },
+  "git": {
+    "autoCommit": false,
+    "commitFormat": "[{type}] {message}"
+  },
+  "tools": {
+    "enabledByDefault": [
+      "Read",
+      "Write", 
+      "Edit",
+      "Bash",
+      "Grep",
+      "Glob"
+    ]
+  }
+}

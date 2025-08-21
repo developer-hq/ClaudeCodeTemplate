@@ -51,7 +51,7 @@ htmlcov/
 .ipynb_checkpoints
 
 # IDE
-.vscode/
+# .vscode/
 .idea/
 *.swp
 *.swo
