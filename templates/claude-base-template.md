@@ -43,6 +43,7 @@
 - **避免盲目修改**：不了解的库或框架，先用文档工具查询最佳实践
 - **使用MCP工具**：利用context7查看官方文档，用grep搜索GitHub实际用法
 - **测试驱动开发**：可以使用 `/output-style tdd` 切换到TDD模式进行开发
+- **智能代理协作**：对于简单/重复任务或超长上下文，可使用Qwen Code子代理辅助
 
 ### 需求确认流程
 
@@ -183,6 +184,24 @@ claude mcp add --transport http grep https://mcp.grep.app
 ```bash
 claude mcp add spec-workflow-mcp -s user -- npx -y spec-workflow-mcp@latest
 ```
+
+### Qwen Code 子代理协作
+
+4. **智能任务分配**
+   - 使用Task工具调用`qwen-code`子代理处理适合的任务
+   - **适合Qwen的任务**：文档生成、批量格式化、简单代码模板、超长上下文分析
+   - **保留Claude的任务**：复杂推理、架构设计、代码审查、问题诊断
+
+5. **使用方式**
+   ```python
+   # 通过Task工具调用
+   # 简单任务示例：生成大量相似代码、翻译文档、批量重命名等
+   # Qwen在处理重复性工作和长上下文方面更有优势
+   ```
+
+6. **自动回退机制**
+   - Qwen不可用时自动回退到Claude处理
+   - 保证工作流的连续性和可靠性
 
 ## 📋 严格代码规范 (Linus风格)
 

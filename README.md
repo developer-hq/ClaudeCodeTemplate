@@ -6,19 +6,20 @@
 
 ## 🚀 快速开始
 
-### 方法一：完整安装（推荐）
+### 一键启动（推荐）
 ```bash
 git clone https://github.com/developer-hq/ClaudeCodeTemplate.git my-project
 cd my-project
-./setup-claude-workflow-enhanced.sh
+bash setup.sh
 ```
 
-### 方法二：快速安装
-```bash
-git clone https://github.com/developer-hq/ClaudeCodeTemplate.git my-project
-cd my-project
-./quick-setup.sh
-```
+**自动化菜单包含：**
+- 🏗️ 完整安装 (uv + pre-commit + MCP)
+- ⚡ 快速安装 (基础功能)
+- 🤖 Qwen代理集成
+- 🌳 Git Worktree管理
+- 🔧 VSCode集成配置
+- 🔔 声音提示系统
 
 ## ✨ 核心特性
 
@@ -66,11 +67,18 @@ cd my-project
 
 ```
 ClaudeCodeTemplate/
-├── setup-claude-workflow-enhanced.sh  # 完整安装脚本
-├── quick-setup.sh                     # 快速安装脚本  
-├── setup-qwen-integration.sh          # Qwen Code 集成脚本
-├── claude-base-template.md            # Claude基础提示词模板
-├── tdd-output-style.md               # TDD输出样式定义
+├── setup.sh                          # 🚀 主启动脚本 (一键菜单)
+├── scripts/                          # 📜 所有功能脚本
+│   ├── setup-claude-workflow-enhanced.sh  # 完整安装
+│   ├── quick-setup.sh                     # 快速安装
+│   ├── setup-qwen-integration.sh         # Qwen集成
+│   ├── worktree-manager.sh               # Git Worktree管理
+│   └── sound-notification.sh             # 声音提示
+├── templates/                        # 📋 配置模板
+│   ├── claude-base-template.md           # Claude提示词模板
+│   └── tdd-output-style.md              # TDD输出样式
+├── config/                          # ⚙️ 配置文件
+│   └── qwen-config.json                  # Qwen代理配置
 ├── qwen-subagent-spec.md             # Qwen 子代理规范文档
 ├── qwen_subagent.py                  # Qwen 子代理实现
 ├── qwen-config.json                  # Qwen 配置文件

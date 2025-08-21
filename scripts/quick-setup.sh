@@ -16,27 +16,30 @@ echo "=================================================="
 # 基础设置
 echo -e "${YELLOW}正在配置基础环境...${NC}"
 
+# 获取脚本目录
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TEMPLATES_DIR="$(dirname "$SCRIPT_DIR")/templates"
+
 # 复制CLAUDE.md模板
-if [ -f "claude-base-template.md" ]; then
-    cp claude-base-template.md CLAUDE.md
+if [ -f "$TEMPLATES_DIR/claude-base-template.md" ]; then
+    cp "$TEMPLATES_DIR/claude-base-template.md" CLAUDE.md
     echo "✅ CLAUDE.md模板已创建"
 fi
 
 # 创建output-styles目录并复制TDD模式
 mkdir -p ~/.claude/output-styles
-if [ -f "tdd-output-style.md" ]; then
-    cp tdd-output-style.md ~/.claude/output-styles/tdd.md
+if [ -f "$TEMPLATES_DIR/tdd-output-style.md" ]; then
+    cp "$TEMPLATES_DIR/tdd-output-style.md" ~/.claude/output-styles/tdd.md
     echo "✅ TDD输出样式已安装"
 fi
 
 # 检查是否可以运行完整安装脚本
-if [ -f "setup-claude-workflow-enhanced.sh" ]; then
+if [ -f "$SCRIPT_DIR/setup-claude-workflow-enhanced.sh" ]; then
     echo -e "\n${BLUE}发现完整安装脚本，是否运行完整配置? (y/N):${NC} "
     read -r run_full
     
     if [ "$run_full" = "y" ] || [ "$run_full" = "Y" ]; then
-        chmod +x setup-claude-workflow-enhanced.sh
-        ./setup-claude-workflow-enhanced.sh
+        bash "$SCRIPT_DIR/setup-claude-workflow-enhanced.sh"
         exit 0
     fi
 fi
@@ -52,4 +55,4 @@ echo ""
 echo "📖 查看 CLAUDE.md 了解详细使用方法"
 echo "🔧 使用 /output-style tdd 切换到测试驱动开发模式"
 echo ""
-echo "如需完整功能，请运行: ./setup-claude-workflow-enhanced.sh"
+echo "如需完整功能，请运行: bash scripts/setup-claude-workflow-enhanced.sh"
