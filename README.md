@@ -1,8 +1,12 @@
 # 一键运行 one click
+### 同步到目标目录
 ```
-git clone --depth 1 --filter=blob:none --sparse git@github.com:developer-hq/ClaudeCodeTemplate.git /tmp/claude-tmp && cd /tmp/claude-tmp && git sparse-checkout set .claude && cp -r .claude . && rm -rf /tmp/claude-tmp
+bash <(curl -s https://raw.githubusercontent.com/developer-hq/ClaudeCodeTemplate/main/quick-sync.sh) TargetPath
 ```
-
+### 同步到当前目录
+```
+bash <(curl -s https://raw.githubusercontent.com/developer-hq/ClaudeCodeTemplate/main/quick-sync.sh) .
+```
 
 
 已配置的hooks：
