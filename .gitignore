@@ -32,12 +32,6 @@ env.bak/
 venv.bak/
 .python-version
 
-# Claude Code工作流
-.claude/git-hook.log
-.claude/shell-snapshots/
-.claude/todos/
-.claude/qwen-status.log
-
 # Testing
 .pytest_cache/
 .coverage

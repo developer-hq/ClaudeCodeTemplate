@@ -1,4 +1,5 @@
 ---
+name: Qwen Code Expert
 description: "Qwen Code Expert - AI pair programming assistant using qwen code command"
 tools:
   - Bash
