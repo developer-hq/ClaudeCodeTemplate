@@ -1,0 +1,87 @@
+{
+  "env": {
+    "USE_BUILTIN_RIPGREP": "1",
+    "CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR": "1",
+    "CLAUDE_CODE_DISABLE_TERMINAL_TITLE": "0"
+  },
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(chmod:*)",
+      "Bash(npm install)",
+      "Bash(npm start:*)",
+      "Bash(npm whoami:*)",
+      "Bash(npm publish:*)",
+      "Bash(npm pkg:*)",
+      "Bash(npm logout)",
+      "Bash(node:*)",
+      "Bash(npm test)",
+      "Bash(ls:*)",
+      "Bash(/usr/local/bin/npm whoami)",
+      "Bash(npm view:*)",
+      "Bash(npm run sync:*)",
+      "Bash(find:*)",
+      "Bash(rm:*)",
+      "Bash(true)",
+      "Bash(grep:*)",
+      "Bash(echo:*)",
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(npm version:*)",
+      "Bash(npm link:*)",
+      "Bash(claude-code-templates:*)",
+      "Bash(npm --version)",
+      "Bash(yarn --version)",
+      "Bash(make:*)",
+      "Bash(awk:*)",
+      "Bash(python:*)",
+      "Bash(/opt/Anaconda3/envs/cu128/bin/python:*)"
+    ],
+    "deny": [],
+    "ask": []
+  },
+  "enabledMcpjsonServers": [
+    "github",
+    "memory"
+  ],
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo -e '\\a'"
+          },
+          {
+            "type": "command",
+            "command": "curl -s \"https://api.day.app/KoHzUjjntYMYAKSufmbFJo/ClaudeCode_Notification_$(date +%H:%M:%S)?level=critical&volume=5&call=1&sound=telegraph\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": ".*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo -e '\\a'"
+          },
+          {
+            "type": "command",
+            "command": "curl -s \"https://api.day.app/KoHzUjjntYMYAKSufmbFJo/ClaudeCode_Stop_$(date +%H:%M:%S)?level=critical&volume=5&call=1&sound=telegraph\""
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash -c 'input=$(cat); MODEL=$(echo \"$input\" | jq -r \".model.display_name\"); DIR=$(echo \"$input\" | jq -r \".workspace.current_dir\"); BRANCH=\"\"; if git rev-parse --git-dir >/dev/null 2>&1; then BRANCH=\" | 🌿 $(git branch --show-current 2>/dev/null)\"; CHANGES=$(git status --porcelain 2>/dev/null | wc -l); if [ $CHANGES -gt 0 ]; then BRANCH=\"$BRANCH ($CHANGES)\"; fi; fi; echo \"[$MODEL] 📁 ${DIR##*/}$BRANCH\"'"
+  },
+  "outputStyle": "default"
+}
