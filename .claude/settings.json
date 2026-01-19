@@ -58,7 +58,7 @@
           },
           {
             "type": "command",
-            "command": "curl -s \"https://api.day.app/YOUR_BARK_TOKEN_HERE/ClaudeCode_Notification_$(date+%H:%M:%S)?level=critical&volume=5&call=1&sound=telegraph\""
+            "command": "curl -s \"https://api.day.app/YOUR_BARK_TOKEN_HERE/ClaudeCode_Note_$(date +%H:%M:%S)?level=critical&volume=5&call=1&sound=telegraph\""
           }
         ]
       }
@@ -73,7 +73,7 @@
           },
           {
             "type": "command",
-            "command": "curl -s \"https://api.day.app/YOUR_BARK_TOKEN_HERE/ClaudeCode_Stop_$(date+%H:%M:%S)?level=critical&volume=5&call=1&sound=telegraph\""
+            "command": "curl -s \"https://api.day.app/YOUR_BARK_TOKEN_HERE/ClaudeCode_Stop_$(date +%H:%M:%S)?level=critical&volume=5&call=1&sound=telegraph\""
           }
         ]
       }
