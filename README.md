@@ -1,11 +1,11 @@
 # 一键运行 one click
 ### 同步到目标目录
 ```
-bash <(curl -s https://raw.githubusercontent.com/developer-hq/ClaudeCodePrivateTemplate/main/quick-sync.sh) TargetPath
+bash <(curl -s https://raw.githubusercontent.com/developer-hq/ClaudeCodeTemplate/master/quick-sync.sh) TargetPath
 ```
 ### 同步到当前目录
 ```
-bash <(curl -s https://raw.githubusercontent.com/developer-hq/ClaudeCodePrivateTemplate/main/quick-sync.sh) .
+bash <(curl -s https://raw.githubusercontent.com/developer-hq/ClaudeCodeTemplate/master/quick-sync.sh) .
 ```
 
 
@@ -14,14 +14,18 @@ bash <(curl -s https://raw.githubusercontent.com/developer-hq/ClaudeCodePrivateT
   1. **Notification** (第51-64行) - Claude发送通知时触发
      - 播放系统提示音
      - 发送推送通知到移动设备（通过 Bark API）
+     - 需要在运行 quick-sync.sh 时配置 Bark Token
 
   2. **Stop** (第66-80行) - Claude停止运行时触发
      - 播放系统提示音
      - 发送推送通知到移动设备（通过 Bark API）
+     - 需要在运行 quick-sync.sh 时配置 Bark Token
 
-  3. **PostToolUse - TodoWrite** (第81-91行) - 任务状态更新时触发
-     - 当任务标记为 `in_progress` 时，自动推送正在执行的任务名称
-     - 使用较轻的提示音（minuet）避免频繁打扰
+## 使用说明
 
-注：之前版本包含的 UserPromptSubmit、Start 和 PostToolUse（自动git提交）hooks 已被移除
+1. 运行 quick-sync.sh 脚本同步配置
+2. 脚本会提示输入 Bark Token（用于手机推送通知）
+3. 如果跳过 Token 配置，可以后续手动编辑 `.claude/settings.json`，将 `YOUR_BARK_TOKEN_HERE` 替换为你的 Bark Token
+
+注：之前版本包含的 UserPromptSubmit、Start 和 PostToolUse（自动git提交、任务跟踪）hooks 已被移除
 
