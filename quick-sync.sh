@@ -2,7 +2,7 @@
 # 一行命令快速同步 Claude 配置
 
 # 用法: ./quick-sync.sh /path/to/target/project
-# 或者: bash <(curl -s https://raw.githubusercontent.com/developer-hq/ClaudeCodeTemplate/master/quick-sync.sh) /target/path
+# 或者: bash <(curl -s https://raw.githubusercontent.com/developer-hq/ClaudeCodeTemplate/main/quick-sync.sh) /target/path
 
 TARGET=${1:-.}
 TEMP="/tmp/claude-sync-$$"

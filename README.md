@@ -1,11 +1,11 @@
 # 一键运行 one click
 ### 同步到目标目录
 ```
-bash <(curl -s https://raw.githubusercontent.com/developer-hq/ClaudeCodeTemplate/master/quick-sync.sh) TargetPath
+bash <(curl -s https://raw.githubusercontent.com/developer-hq/ClaudeCodeTemplate/main/quick-sync.sh) TargetPath
 ```
 ### 同步到当前目录
 ```
-bash <(curl -s https://raw.githubusercontent.com/developer-hq/ClaudeCodeTemplate/master/quick-sync.sh) .
+bash <(curl -s https://raw.githubusercontent.com/developer-hq/ClaudeCodeTemplate/main/quick-sync.sh) .
 ```
 
 

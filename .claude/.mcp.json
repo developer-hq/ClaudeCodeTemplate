@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "http",
+      "args": ["https://mcp.context7.com/mcp"],
+      "description": "Context7 官方文档查询 - 解析库名到 Context7 ID 和获取最新官方文档",
+      "tools": ["resolve-library-id", "get-library-docs"]
+    },
+    "grep": {
+      "command": "http", 
+      "args": ["https://mcp.grep.app"],
+      "description": "Grep MCP - 搜索 GitHub 上的实际使用案例",
+      "tools": ["searchGitHub"]
+    }
+  }
+}

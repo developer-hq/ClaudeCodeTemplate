@@ -1,0 +1,19 @@
+{
+    "CodeGPT.apiKey": "OpenAI",
+    "remote.extensionKind": {
+    "AMiner.codegeex": ["ui"],
+        "pub.name": [
+            "ui"
+        ]
+    },
+    "claude-code.soundNotifications": true,
+    "terminal.integrated.shellIntegration.enabled": true,
+    "terminal.integrated.bellDuration": 1000,
+    "terminal.integrated.bellDuration": 1000,
+    "audioCues.enabled": "on",
+    "accessibility.signalOptions.volume": 100,
+    "accessibility.signals.terminalBell": {
+        "sound": "on"
+    },
+    "terminal.integrated.enableVisualBell": true,
+}
